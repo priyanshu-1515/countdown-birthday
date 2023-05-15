@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Diva's Birthday Countdown</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-image: url("https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2550&q=80");
+      }
+      
+      h1 {
+        color: #444444;
+        margin-top: 50px;
+      }
+      
+      #countdown {
+        font-size: 50px;
+        color: #ff6600;
+        margin-top: 50px;
+      }
+      
+      #message {
+        font-size: 24px;
+        color: #777777;
+        margin-top: 30px;
+      }
+          /* Balloons */
+          @keyframes fly {
+			0% { transform: translate(0, 0); }
+			100% { transform: translate(-200%, -200%); }
+		}
+
+		.balloon {
+			position: absolute;
+			animation: fly 15s linear infinite;
+		}
+
+		.balloon.red {
+			background-color: #FF3B3F;
+			border-radius: 50% 50% 70% 70%;
+			width: 45px;
+			height: 90px;
+		}
+
+		.balloon.blue {
+			background-color: #0099FF;
+			border-radius: 50% 50% 70% 70%;
+      width: 45px;
+			height: 90px;
+		}
+
+		.balloon.green {
+			background-color: #33CC33;
+			border-radius: 50% 50% 70% 70%;
+      width: 45px;
+			height: 90px;
+		}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+    /* Candles */
+    @keyframes flicker {
+      0% {
+        opacity: 1;
+      }
+      25% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+      75% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+      /* Candles */
+      @keyframes flicker {
+        0% {
+          opacity: 1;
+        }
+        25% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+        75% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .candle {
+        position: absolute;
+        bottom: 120px;
+        width: 10px;
+        height: 60px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #ffd700, 0 0 20px #ffd700;
+        animation: flicker 3s linear infinite;
+      }
+
+      .candle:before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #ffd700;
+        top: -15px;
+        border-radius: 50%;
+        box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #ffd700, 0 0 20px #ffd700;
+      }
+
+      .cake {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: float-cake 4s ease-in-out infinite;
+      }
+
+      .cake img {
+        max-width: 100%;
+      }
+
+      @keyframes float-cake {
+        0% {
+          transform: translate(-50%, 0);
+        }
+        50% {
+          transform: translate(-50%, -20px);
+        }
+        100% {
+          transform: translate(-50%, 0);
+        }
+      }
+.confetti {
+  width: 15px;
+  height: 15px;
+  background-color: #f5c12a;
+  position: fixed;
+  animation-name: confetti-fall;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  z-index: 9999;
+}
+
+/*@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(100px) rotate(180deg);
+  }
+  50% {
+    transform: translateY(400px) rotate(360deg);
+  }
+  75% {
+    transform: translateY(700px) rotate(540deg);
+  }
+  100% {
+    transform: translateY(1000px) rotate(720deg);
+  }
+}
+.confetti {
+  animation: confetti-fall 4s linear infinite;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+}*/
+
+@keyframes confetti-fall {
+  from {
+    transform: translateY(-50px) rotate(0deg);
+  }
+  to {
+    transform: translateY(100vh) rotate(1080deg);
+  }
+}
+
+.confetti:nth-child(2n) {
+  transform: translateX(50px);
+}
+
+.confetti:nth-child(3n) {
+  transform: translateX(-50px);
+}
+
+.confetti:nth-child(4n) {
+  transform: translateX(100px);
+}
+
+.confetti:nth-child(5n) {
+  transform: translateX(-100px);
+}
+
+.confetti:nth-child(6n) {
+  transform: translateX(150px);
+}
+
+.confetti:nth-child(7n) {
+  transform: translateX(-150px);
+}
+
+.confetti:nth-child(8n) {
+  transform: translateX(200px);
+}
+
+.confetti:nth-child(9n) {
+  transform: translateX(-200px);
+}
+    </style>
+  </head>
+  
+  <body>
+    <h1>Countdown to Diva's Birthday</h1>
+    <div id="countdown"></div>
+    <div id="message"></div>
+    <div class="balloon red" style="top: 10%; left: 10%;"></div>
+    <div class="balloon blue" style="top: 20%; left: 20%;"></div>
+    <div class="balloon green" style="top: 30%; left: 30%;"></div>
+    
+    <div class="balloon red" style="top: 10%; right: 10%;"></div>
+    <div class="balloon blue" style="top: 20%; right: 20%;"></div>
+    <div class="balloon green" style="top: 30%; right: 30%;"></div>
+
+    <div class="balloon red" style="bottom: 10%; right: 10%;"></div>
+    <div class="balloon blue" style="bottom: 20%; right: 20%;"></div>
+    <div class="balloon green" style="bottom: 30%; right: 30%;"></div>
+
+    <div class="balloon red" style="bottom: 10%; left: 10%;"></div>
+    <div class="balloon blue" style="bottom: 20%; left: 20%;"></div>
+    <div class="balloon green" style="bottom: 30%; left: 30%;"></div>
+
+    <div class="balloon red" style="top: 10%; left: 10%;"></div>
+    <div class="balloon blue" style="top: 20%; left: 20%;"></div>
+    <div class="balloon green" style="top: 30%; left: 30%;"></div>
+    
+    <div class="candle" style="bottom: 75%; right: 10%;"></div>
+    <div class="candle" style="bottom: 70%; right: 20%;"></div>
+    <div class="candle" style="top: 5%; right: 30%;"></div>
+
+    <div class="candle" style="bottom: 75%; left: 10%;"></div>
+    <div class="candle" style="top: 25%; left: 20%;"></div>
+    <div class="candle" style="top: 5%; left: 30%;"></div>
+
+    <!--<div class="confetti" style="bottom: 68%; right: 71%;"></div>
+    <div class="confetti" style="bottom: 44%; right: 49%;"></div>
+    <div class="confetti" style="bottom: 92%; right: 27%;"></div>
+    <div class="confetti" style="bottom: 51%; right: 56%;"></div>
+    <div class="confetti" style="bottom: 13%; right: 12%;"></div>
+    <div class="confetti" style="bottom: 81%; right: 97%;"></div>
+    <div class="confetti" style="bottom: 29%; right: 82%;"></div>
+    <div class="confetti" style="bottom: 63%; right: 23%;"></div>
+    <div class="confetti" style="bottom: 6%; right: 72%;"></div>
+    <div class="confetti" style="bottom: 72%; right: 46%;"></div> -->
+    
+    
+    <script>
+      function countdown() {
+        const now = new Date().getTime();
+        const birthday = new Date("May 16, 2023 00:00:00").getTime();
+        const diff = birthday - now;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+      
+      setInterval(countdown, 1000);
+      
+      const birthday = new Date("May 16, 2023 00:00:00").getTime();
+      const now = new Date().getTime();
+      const diff = birthday - now;
+      
+      if (diff < 0) {
+        document.getElementById("message").innerHTML = "Happy Birthday Diva!";
+      }
+    </script>
+    <script>
+      // Function to generate random values between min and max
+      function getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+  
+      // Function to generate random color
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+  
+      // Generate 50 random divs
+      for (var i = 0; i < 100; i++) {
+        var confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.bottom = getRandom(10, 90) + "%";
+        confetti.style.right = getRandom(10, 90) + "%";
+        confetti.style.backgroundColor = getRandomColor();
+        document.body.appendChild(confetti);
+      }
+    </script>
+  </body>
+</html>
