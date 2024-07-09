@@ -345,21 +345,69 @@ a::before {
   font-size: 1em;
   color: brown;
 }
+.audio-controls button {
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      margin: 0 10px;
+      transition: background-color 0.3s ease;
+    }
 
+    .audio-controls button:hover {
+      background-color: #0056b3;
+    }
 
     </style>
   </head>
   
   <body>
-<audio autoplay loop>
-    <source src="https://priyanshu-1515.github.io/countdown-birthday/happy-birthday-jazz-171120.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+    <audio id="myAudio" loop>
+        <source src="https://priyanshu-1515.github.io/countdown-birthday/happy-birthday-jazz-171120.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    
+      <script>
+                var audio = document.getElementById("myAudio");
+                var playBtn = document.getElementById("playBtn");
+                var pauseBtn = document.getElementById("pauseBtn");
+            
+                function playAudio() {
+                audio.play();
+                playBtn.disabled = true;
+                pauseBtn.disabled = false;
+                }
+            
+                function pauseAudio() {
+                audio.pause();
+                playBtn.disabled = false;
+                pauseBtn.disabled = true;
+                } 
+        </script>
+
+<!--<div class="container">
+    <h1>Birthday Countdown</h1>
+    <div id="countdown"></div>
+    <div id="message"></div>
+    <div class="audio-controls">
+      <button onclick="playAudio()" id="playBtn">Play</button>
+      <button onclick="pauseAudio()" id="pauseBtn">Pause</button>
+    </div>
+  </div> -->
+
+
     <div class="coffee-art"></div>
     <div class="container">
         <h1 style="color:red"><br><br><br>Countdown to Pratiksha's Birthday<br></h1>
         <div id="countdown"></div>
         <div id="message"></div>
+        <div class="audio-controls">
+            <button onclick="playAudio()" id="playBtn">Play</button>
+            <button onclick="pauseAudio()" id="pauseBtn">Pause</button>
+          </div>
     </div>  
     <!-- <div class="balloon red" style="top: 10%; left: 10%;"></div>
     <div class="balloon blue" style="top: 20%; left: 20%;"></div>
