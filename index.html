@@ -2,34 +2,52 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Pratiksha Birthday Countdown</title>
+    <title>Pratiksha's Birthday Countdown</title>
     <style>
+      
+      * {
+        margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  min-height: 100vh;
+}
+
       body {
         background-color: #f2f2f2;
         font-family: Arial, sans-serif;
         text-align: center;
         background-image: url("https://images.unsplash.com/photo-1584395631446-e41b0fc3f68d?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-      	background-size: cover;
-         background-position: center;
-        background-repeat: no-repeat;
-        min-height: 100vh;
-      }
+        background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
       
       h1 {
         color: #444444;
-        margin-top: 50px;
+        margin-top: 10px;;
       }
       
       #countdown {
         font-size: 50px;
         color: #ff6600;
-        margin-top: 50px;
+        margin-top: 10px;
       }
       
       #message {
         font-size: 24px;
-        color: #777777;
-        margin-top: 30px;
+        color: #f70505;
+        margin-top: 10px;
       }
           /* Balloons */
           @keyframes fly {
@@ -257,7 +275,7 @@ body {
   overflow: hidden;
 }
 
-body::before {
+/*body::before {
   content: "";
   position: absolute;
   top: 0;
@@ -290,7 +308,7 @@ body::after {
     rgba(0, 0, 0, 0.1) 5px,
     rgba(0, 0, 0, 0.1) 6px
   );
-}
+}*/
 
 /* Add the coffee art to specific elements randomly */
 h1, p, a {
@@ -334,9 +352,11 @@ a::before {
   
   <body>
     <div class="coffee-art"></div>
-    <h1 style="color:red"><br><br><br>Countdown to Pratiksha's Birthday</h1>
-    <div id="countdown"></div>
-    <div id="message"></div>
+    <div class="container">
+        <h1 style="color:red"><br><br><br>Countdown to Pratiksha's Birthday<br></h1>
+        <div id="countdown"></div>
+        <div id="message"></div>
+    </div>  
     <!-- <div class="balloon red" style="top: 10%; left: 10%;"></div>
     <div class="balloon blue" style="top: 20%; left: 20%;"></div>
     <div class="balloon green" style="top: 30%; left: 30%;"></div>
@@ -398,7 +418,9 @@ a::before {
       const diff = birthday - now;
       
       if (diff < 0) {
-        document.getElementById("message").innerHTML = "Happy Birthday Pratiksha! :) <3 ";
+    
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("message").innerHTML = "Happy Birthday Pratiksha! :) <3 You are beautiful! You are awesome! You Are amazing! <br>You will excel and keep rocking in life. I wish all your dream comes true, may this year and coming year be as beautiful as you are! :) ";
       }
     </script>
     <script>
@@ -431,7 +453,7 @@ a::before {
     // Generate coffee art elements
     function generateCoffeeArt() {
       const numCoffeeArt = 20; // Number of coffee art elements to generate
-      const emojis = ['☕', '🍵', '🍩', '🍰', '🍪','⛰️','🏔️]; // Array of emojis for variety
+      const emojis = ['☕', '🍵', '🍩', '🍰', '🍪']; // Array of emojis for variety
   
       for (let i = 0; i < numCoffeeArt; i++) {
         const coffeeArt = document.createElement('div');
